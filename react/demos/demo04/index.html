@@ -1,0 +1,42 @@
+<!--
+Define a component
+
+react 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。
+
+React.createClass 方法就用于生成一个组件类
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <h1>定义组件</h1>
+    <div id="example"></div>
+    <script type="text/babel">
+//      var HelloMessage = React.createClass({
+//        render: function() {                        // 用于输出组件
+//          return <h1>Hello {this.props.name}</h1>;
+//        }
+//      });
+
+      class HelloMessage extends React.Component {
+        render() {
+          return <h1>Hello {this.props.name}</h1>;
+        }
+      }
+      /**
+       * 组件的用法与原生的 HTML 标签完全一致，可以任意加入属性
+       *
+       * 组件的属性可以在组件类的 this.props 对象上获取
+       */
+      ReactDOM.render(
+        <HelloMessage name="John" />,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>

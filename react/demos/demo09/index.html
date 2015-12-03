@@ -1,0 +1,36 @@
+<!--
+用户在表单填入的内容，属于用户跟组件的互动，所以不能用 this.props 读取
+
+
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <script type="text/babel">
+      var Input = React.createClass({
+        getInitialState: function() {
+          return {value: 'Hellddo!'};
+        },
+        handleChange: function(event) {
+          this.setState({value: this.refs.aaa.value});
+        },
+        render: function () {
+          var value = this.state.value;
+          return (
+            <div>
+              <input type="text" value={value} ref='aaa' onChange={this.handleChange} />
+              <p>{value}</p>
+            </div>
+          );
+        }
+      });
+
+      ReactDOM.render(<Input/>, document.body);
+    </script>
+  </body>
+</html>

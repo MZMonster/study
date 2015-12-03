@@ -1,0 +1,44 @@
+<!--
+  this.props.children
+
+  this.props.children 属性，它表示组件的所有子节点
+
+  React 提供一个工具方法 React.Children 来处理 this.props.children
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <script type="text/babel">
+
+      class NotesList extends React.Component {
+        render() {
+          console.log(this.props.children);
+          return (
+            <ol>
+            {
+              React.Children.map(this.props.children, function (child) {
+                return <li>{child}</li>;
+              })
+            }
+            </ol>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <NotesList>
+          <span>hello</span>
+          <span>world</span>
+        </NotesList>,
+        document.body
+      );
+    </script>
+  </body>
+</html>
+
